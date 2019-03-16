@@ -4,18 +4,21 @@
 #
 Name     : R-lazyeval
 Version  : 0.2.1
-Release  : 27
+Release  : 28
 URL      : https://cran.r-project.org/src/contrib/lazyeval_0.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lazyeval_0.2.1.tar.gz
-Summary  : Lazy (Non-Standard) Evaluation
+Summary  : An alternative approach to non-standard evaluation using formulas. Provides a full implementation of LISP style 'quasiquotation', making it easier to generate code with other code.
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: R-lazyeval-lib
-BuildRequires : clr-R-helpers
+Requires: R-lazyeval-lib = %{version}-%{release}
+Requires: R-markdown
+BuildRequires : R-markdown
+BuildRequires : buildreq-R
 
 %description
-formulas. Provides a full implementation of LISP style 'quasiquotation',
-    making it easier to generate code with other code.
+# lazyeval
+[![Build Status](https://travis-ci.org/hadley/lazyeval.png?branch=master)](https://travis-ci.org/hadley/lazyeval)
+[![Coverage Status](http://codecov.io/github/hadley/lazyeval/coverage.svg?branch=master)](http://codecov.io/github/hadley/lazyeval?branch=master)
 
 %package lib
 Summary: lib components for the R-lazyeval package.
@@ -33,11 +36,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523312884
+export SOURCE_DATE_EPOCH=1552766286
 
 %install
+export SOURCE_DATE_EPOCH=1552766286
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523312884
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -72,8 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library lazyeval|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  lazyeval || :
 
 
 %files
@@ -106,10 +108,25 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/lazyeval/help/paths.rds
 /usr/lib64/R/library/lazyeval/html/00Index.html
 /usr/lib64/R/library/lazyeval/html/R.css
-/usr/lib64/R/library/lazyeval/libs/symbols.rds
+/usr/lib64/R/library/lazyeval/tests/testthat.R
+/usr/lib64/R/library/lazyeval/tests/testthat/ast-irregular.txt
+/usr/lib64/R/library/lazyeval/tests/testthat/ast-sample.txt
+/usr/lib64/R/library/lazyeval/tests/testthat/test-ast.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-call.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-complain.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-dots.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-expr.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-f-capture.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-f-eval.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-f-interp.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-f-list.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-f-unwrap.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-formula.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-function.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-language.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-lazy.R
+/usr/lib64/R/library/lazyeval/tests/testthat/test-names.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/lazyeval/libs/lazyeval.so
-/usr/lib64/R/library/lazyeval/libs/lazyeval.so.avx2
-/usr/lib64/R/library/lazyeval/libs/lazyeval.so.avx512
