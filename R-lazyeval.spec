@@ -4,22 +4,18 @@
 #
 Name     : R-lazyeval
 Version  : 0.2.2
-Release  : 38
+Release  : 39
 URL      : https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
-Summary  : An alternative approach to non-standard evaluation using formulas. Provides a full implementation of LISP style 'quasiquotation', making it easier to generate code with other code.
+Summary  : Lazy (Non-Standard) Evaluation
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-lazyeval-lib = %{version}-%{release}
-BuildRequires : R-markdown
-BuildRequires : R-rlang
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-# lazyeval
-[![Build Status](https://travis-ci.org/hadley/lazyeval.png?branch=master)](https://travis-ci.org/hadley/lazyeval)
-[![Coverage Status](http://codecov.io/github/hadley/lazyeval/coverage.svg?branch=master)](http://codecov.io/github/hadley/lazyeval?branch=master)
+formulas. Provides a full implementation of LISP style 'quasiquotation',
+    making it easier to generate code with other code.
 
 %package lib
 Summary: lib components for the R-lazyeval package.
@@ -31,21 +27,22 @@ lib components for the R-lazyeval package.
 
 %prep
 %setup -q -c -n lazyeval
+cd %{_builddir}/lazyeval
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571853738
+export SOURCE_DATE_EPOCH=1589826197
 
 %install
-export SOURCE_DATE_EPOCH=1571853738
+export SOURCE_DATE_EPOCH=1589826197
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

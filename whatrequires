@@ -1,14 +1,10 @@
 # This file contains recursive sources that require this package
-R-PerformanceAnalytics
 R-RNeXML
 R-crosstalk
-R-dtplyr
 R-geojson
-R-ggplot2
 R-ggvis
 R-jqr
 R-mockr
-R-phylobase
 R-plotly
 R-rex
 R-vcr
