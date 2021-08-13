@@ -4,7 +4,7 @@
 #
 Name     : R-lazyeval
 Version  : 0.2.2
-Release  : 47
+Release  : 48
 URL      : https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
 Summary  : Lazy (Non-Standard) Evaluation
