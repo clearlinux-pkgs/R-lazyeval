@@ -1,8 +1,6 @@
 # This file contains recursive sources that require this package
-R-RNeXML
 R-crosstalk
 R-geojson
 R-jqr
-R-mockr
 R-plotly
 R-rex
